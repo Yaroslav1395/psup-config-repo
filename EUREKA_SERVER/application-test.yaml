@@ -3,6 +3,7 @@ server:
 spring:
   application:
     name: EUREKA_SERVER
+  #Вот этот не нужен
   config:
     import: optional:configserver:http://localhost:8888
   cloud:
