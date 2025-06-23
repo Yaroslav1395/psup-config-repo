@@ -1,0 +1,25 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: STORAGE_SERVICE
+  r2dbc:
+    url: ${SPRING_R2DBC_URL:r2dbc:postgresql://localhost:5433/storage_db}
+    username: admin
+    password: admin
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/main-changelog.xml
+    default-schema: public
+    url: ${SPRING_LIQUIBASE_URL:jdbc:postgresql://localhost:5433/storage_db}
+    user: admin
+    password: admin
+logging:
+  level:
+    org.springframework.data.r2dbc: DEBUG
+eureka:
+  instance:
+    hostname: ${EUREKA_HOST:localhost}
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
