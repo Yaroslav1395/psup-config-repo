@@ -8,17 +8,17 @@ spring:
       discovery:
         locator:
           enabled: false
-    config:
-      enabled: true
-      fail-fast: true
-      username: myUsername
-      password: mySecretPassword
-      override-system-properties: false
 eureka:
   client:
+    register-with-eureka: true
+    fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka
-    enabled: true
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+    registry-fetch-interval-seconds: 10
+    initial-instance-info-replication-interval-seconds: 5
+  instance:
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
