@@ -5,7 +5,7 @@ spring:
     name: GATEWAY_SERVICE
   cloud:
     discovery:
-      enabled: false
+      enabled: true
     gateway:
       discovery:
         locator:
