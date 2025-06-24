@@ -13,7 +13,7 @@ spring:
       routes:
         - id: product-service
           #uri: ${PRODUCT_SERVICE_URL:http://localhost:8080}
-          uri: lb:http://PRODUCT_SERVICE
+          uri: lb://PRODUCT_SERVICE
           predicates:
             - Path=/api/v1/product-service/**
           filters:
