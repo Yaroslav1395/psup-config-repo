@@ -4,6 +4,8 @@ spring:
   application:
     name: GATEWAY_SERVICE
   cloud:
+    discovery:
+      enabled: true
     gateway:
       discovery:
         locator:
