@@ -2,7 +2,7 @@ server:
   port: 9999
 spring:
   application:
-    name: GATEWAY_SERVICE
+    name: GATEWAY-SERVICE
   cloud:
     gateway:
       discovery:

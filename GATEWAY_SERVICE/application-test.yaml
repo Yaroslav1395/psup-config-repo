@@ -2,7 +2,7 @@ server:
   port: 9999
 spring:
   application:
-    name: GATEWAY_SERVICE
+    name: GATEWAY-SERVICE
   cloud:
     discovery:
       enabled: true
@@ -12,18 +12,18 @@ spring:
           enabled: true
       routes:
         - id: product-service
-          uri: lb://PRODUCT-SERVICE
+          uri: ${PRODUCT_SERVICE_URL:http://localhost:8080}
           predicates:
             - Path=/api/v1/product-service/**
-          #filters:
-            #- name: CircuitBreaker
-              #args:
-                #name: productCircuitBreaker
-                #fallbackUri: forward:/fallback/product-service
-                #statusCodes:
-                  #- INTERNAL_SERVER_ERROR
-                  #- GATEWAY_TIMEOUT
-                  #- BAD_GATEWAY
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: productCircuitBreaker
+                fallbackUri: forward:/fallback/product-service
+                statusCodes:
+                  - INTERNAL_SERVER_ERROR
+                  - GATEWAY_TIMEOUT
+                  - BAD_GATEWAY
         - id: manufacture-service
           uri: ${MANUFACTURE_SERVICE_URL:http://localhost:8081}
           predicates:
