@@ -2,7 +2,7 @@ server:
   port: 8080
 spring:
   application:
-    name: PRODUCT_SERVICE
+    name: PRODUCT-SERVICE
   r2dbc:
     url: ${SPRING_R2DBC_URL:r2dbc:postgresql://localhost:5432/product_db}
     username: admin
