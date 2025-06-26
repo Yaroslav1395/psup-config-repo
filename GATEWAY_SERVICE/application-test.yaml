@@ -126,6 +126,7 @@ logging:
     org.springframework.cloud.gateway: DEBUG
     org.springframework.cloud.gateway.route.RouteDefinitionLocator: DEBUG
     org.springframework.cloud.gateway.handler.RoutePredicateHandlerMapping: TRACE
+    org.springframework.cloud.loadbalancer: DEBUG
     reactor.netty.http.client: DEBUG
 management:
   endpoints:
