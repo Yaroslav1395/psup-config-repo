@@ -17,9 +17,6 @@ spring:
   cloud:
     discovery:
       enabled: true
-logging:
-  level:
-    org.springframework.data.r2dbc: DEBUG
 eureka:
   client:
     register-with-eureka: true
@@ -30,4 +27,55 @@ eureka:
     initial-instance-info-replication-interval-seconds: 5
   instance:
     lease-renewal-interval-in-seconds: 10
-    lease-expiration-duration-in-seconds: 30
+    lease-expiration-duration-in-seconds: 30\
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 5
+        minimum-number-of-calls: 5
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 1s
+        permitted-number-of-calls-in-half-open-state: 2
+        automatic-transition-from-open-to-half-open-enabled: true
+        record-exceptions:
+          - java.io.IOException
+          - java.net.ConnectException
+          - java.util.concurrent.TimeoutException
+          - org.springframework.web.reactive.function.client.WebClientRequestException
+        ignore-exceptions:
+        #- org.springframework.web.reactive.function.client.WebClientResponseException
+    instances:
+      STORAGE-SERVICE:
+        base-config: default
+  retry:
+    configs:
+      default:
+        max-attempts: 3
+        wait-duration: 1s
+        retry-exceptions:
+          - java.util.concurrent.TimeoutException
+    instances:
+      STORAGE-SERVICE:
+        base-config: default
+  timelimiter:
+    configs:
+      default:
+        timeout-duration: 2s
+        cancel-running-future: true
+    instances:
+      STORAGE-SERVICE:
+        base-config: default
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  level:
+    org.springframework.data.r2dbc: DEBUG
+storage:
+  service:
+    base:
+      url: ${STORAGE_SERVICE_BASE_URL:http://localhost:8081}
