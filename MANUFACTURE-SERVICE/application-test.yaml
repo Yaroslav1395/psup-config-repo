@@ -75,6 +75,9 @@ management:
 logging:
   level:
     org.springframework.data.r2dbc: DEBUG
+    io.github.resilience4j: DEBUG
+    reactor.retry: DEBUG
+    org.springframework.cloud.circuitbreaker: DEBUG
 storage:
   service:
     base:
