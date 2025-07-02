@@ -46,8 +46,12 @@ resilience4j:
           - org.springframework.web.reactive.function.client.WebClientRequestException
           - org.springframework.web.client.HttpServerErrorException
           - org.springframework.web.reactive.function.client.WebClientResponseException.InternalServerError
+          - org.springframework.web.reactive.function.client.WebClientResponseException.ServiceUnavailable
         ignore-exceptions:
-        #- org.springframework.web.reactive.function.client.WebClientResponseException
+          - org.springframework.web.reactive.function.client.WebClientResponseException.BadRequest
+          - org.springframework.web.reactive.function.client.WebClientResponseException.NotFound
+          - org.springframework.web.reactive.function.client.WebClientResponseException.Unauthorized
+          - org.springframework.web.reactive.function.client.WebClientResponseException.Forbidden
     instances:
       STORAGE-SERVICE:
         base-config: default
