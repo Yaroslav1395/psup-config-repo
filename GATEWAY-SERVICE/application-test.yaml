@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: GATEWAY-SERVICE
+  zipkin:
+    base-url: ${ZIPKIN_URL:http://localhost:9411}
   cloud:
     discovery:
       enabled: true
@@ -133,6 +135,12 @@ management:
     web:
       exposure:
         include: '*'
+  tracing:
+    enabled: false
+    sampling:
+      probability: 10.0
   endpoint:
+    health:
+      show-details: always
     gateway:
       enabled: true
