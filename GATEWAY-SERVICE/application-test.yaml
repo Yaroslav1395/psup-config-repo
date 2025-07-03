@@ -138,7 +138,7 @@ management:
   tracing:
     enabled: false
     sampling:
-      probability: 10.0
+      probability: 1.0
   endpoint:
     health:
       show-details: always
