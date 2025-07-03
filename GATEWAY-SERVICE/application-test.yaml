@@ -124,6 +124,8 @@ eureka:
     lease-renewal-interval-in-seconds: 10
     lease-expiration-duration-in-seconds: 30
 logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
   level:
     org.springframework.cloud.gateway: DEBUG
     org.springframework.cloud.gateway.route.RouteDefinitionLocator: DEBUG
