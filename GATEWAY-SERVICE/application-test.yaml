@@ -139,7 +139,7 @@ management:
       exposure:
         include: '*'
   tracing:
-    enabled: false
+    enabled: true
     sampling:
       probability: 1.0
   endpoint:
