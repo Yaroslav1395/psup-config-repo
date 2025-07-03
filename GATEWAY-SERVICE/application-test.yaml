@@ -111,18 +111,6 @@ resilience4j:
       storageCircuitBreaker:
         timeout-duration: 2s
         cancel-running-future: true
-eureka:
-  client:
-    enabled: true
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
-    registry-fetch-interval-seconds: 10
-    initial-instance-info-replication-interval-seconds: 5
-  instance:
-    lease-renewal-interval-in-seconds: 10
-    lease-expiration-duration-in-seconds: 30
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
