@@ -65,13 +65,24 @@ resilience4j:
         timeout-duration: 2s
         cancel-running-future: true
 management:
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_URL:http://localhost:9411/api/v2/spans}
   endpoints:
     web:
       exposure:
         include: '*'
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
 logging:
   level:
     org.springframework.data.r2dbc: DEBUG
     io.github.resilience4j: DEBUG
     reactor.retry: DEBUG
     org.springframework.cloud.circuitbreaker: DEBUG
+manufacture:
+  service:
+    base:
+      url: ${MANUFACTURE_SERVICE_BASE_URL:http://localhost:8081}
