@@ -87,7 +87,7 @@ management:
       probability: 1.0
 logging:
   level:
-    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+    level: "%5p [${spring.application.name}, trace=%X{traceId:-}, span=%X{spanId:-}]"
     org.springframework.data.r2dbc: DEBUG
     io.github.resilience4j: DEBUG
     reactor.retry: DEBUG
