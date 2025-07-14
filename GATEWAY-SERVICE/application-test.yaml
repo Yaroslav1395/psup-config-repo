@@ -147,3 +147,5 @@ management:
       show-details: always
     gateway:
       enabled: true
+log:
+  path: ${user.home}/Universal_Trade_Platform/logs/gateway-service

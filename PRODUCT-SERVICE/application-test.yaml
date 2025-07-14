@@ -84,6 +84,8 @@ logging:
     io.github.resilience4j: DEBUG
     reactor.retry: DEBUG
     org.springframework.cloud.circuitbreaker: DEBUG
+log:
+  path: ${user.home}/Universal_Trade_Platform/logs/product-service
 manufacture:
   service:
     base:
