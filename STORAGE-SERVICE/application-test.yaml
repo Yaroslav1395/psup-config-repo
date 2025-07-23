@@ -4,14 +4,14 @@ spring:
   application:
     name: STORAGE-SERVICE
   r2dbc:
-    url: ${SPRING_R2DBC_URL:r2dbc:postgresql://localhost:5433/storage_db}
+    url: ${SPRING_R2DBC_URL:r2dbc:postgresql://localhost:5434/storage_db}
     username: admin
     password: admin
   liquibase:
     enabled: true
     change-log: classpath:/db/main-changelog.xml
     default-schema: public
-    url: ${SPRING_LIQUIBASE_URL:jdbc:postgresql://localhost:5433/storage_db}
+    url: ${SPRING_LIQUIBASE_URL:jdbc:postgresql://localhost:5434/storage_db}
     user: admin
     password: admin
   cloud:
