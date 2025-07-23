@@ -23,7 +23,7 @@ spring:
       group-id: storage-service
       auto-offset-reset: latest
       properties:
-        spring.json.trusted.packages: sakhno.psup.storage_service.events
+        spring.json.trusted.packages: sakhno.psup.storage_service.events.consumer
         spring.json.type.mapping: >
           storageTestEvent:sakhno.psup.storage_service.events.consumer.StorageTestEvent
     producer:
